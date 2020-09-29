@@ -36,6 +36,11 @@ namespace CustomListProject
         {
 
         }
+
+        public void Remove(T item)
+        {
+
+        }
         
 
 

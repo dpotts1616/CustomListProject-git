@@ -34,7 +34,21 @@ namespace CustomListProject
         //methods
         public void Add(T item)
         {
-
+            if (count == capacity)
+            {
+                T[] temporary = new T[count];
+                for (int i = 0; i < count; i++)
+                {
+                    temporary[i] = items[i];
+                }
+                items = new T[capacity *= 2];
+                for (int i = 0; i < count; i++)
+                {
+                    items[i] = temporary[i];
+                }
+            }
+            items[count] = item;
+            count++;
         }
 
         public void Remove(T item)

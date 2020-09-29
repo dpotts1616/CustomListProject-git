@@ -126,7 +126,44 @@ namespace CustomListTesting
             Assert.AreEqual(expected4, actual4);
         }
 
-        //item does not exist to remove
+        ////item does not exist to remove
+        //[TestMethod]
+        //[ExpectedException(typeof(NullReferenceException))]
+        //public void Remove_FiveValues_CheckForNullExceptionMissingObject()
+        //{
+        //    //arrange
+        //    CustomList<int> list = new CustomList<int>();
+        //    int value1 = 1;
+        //    int value2 = 2;
+        //    int value3 = 3;
+        //    int value4 = 4;
+        //    int value5 = 5;
+
+        //    //act
+        //    list.Add(value1);
+        //    list.Add(value2);
+        //    list.Add(value3);
+        //    list.Add(value4);
+        //    list.Add(value5);
+        //    list.Remove(6);
+
+        //    //assert
+        //}
+
+        //no items in list
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void Remove_NoValues_CheckForNullExceptionMissingObject()
+        {
+            //arrange
+            CustomList<int> list = new CustomList<int>();
+            int index = 6;
+
+            //act
+            list.Remove(index);
+
+            //assert
+        }
 
     }
 }

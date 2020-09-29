@@ -147,22 +147,11 @@ namespace CustomListTesting
             CustomList<int> list = new CustomList<int>();
 
             //act
-            int i = list[1];
+            int i = list[6];
 
             //assert
         }
 
-        [TestMethod]
-            [ExpectedException(typeof(NullReferenceException))]
-        public void Add_NoValues_CheckForNullException()
-        {
-            //arrange
-            CustomList<int> list = new CustomList<int>();
-
-            //act
-            int i = list[0];
-
-            //assert
-        }
+      
     }
 }

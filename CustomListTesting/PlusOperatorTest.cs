@@ -112,7 +112,7 @@ namespace CustomListTesting
             list1.Add(value2);
             list2.Add(value3);
             list2.Add(value4);
-            CustomList<int> result = list1 + list2;
+            CustomList<string> result = list1 + list2;
 
             //assert
             Assert.AreEqual(value1, result[0]);

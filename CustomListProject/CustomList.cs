@@ -81,7 +81,7 @@ namespace CustomListProject
             return newString;
         }
 
-
-
+        public static CustomList<T> operator +(CustomList<T> a, CustomList<T> b)
+            ;
     }
 }

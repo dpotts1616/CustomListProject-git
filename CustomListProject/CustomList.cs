@@ -67,7 +67,20 @@ namespace CustomListProject
                 }
             }
         }
-        
+
+
+        public override string ToString()
+        {
+            string newString;
+            StringBuilder builder = new StringBuilder();
+            for(int i = 0; i < count; i++)
+            {
+                builder.Append(items[i]);
+            }
+            newString = builder.ToString();
+            return newString;
+        }
+
 
 
     }

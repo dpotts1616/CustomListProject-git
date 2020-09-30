@@ -10,6 +10,12 @@ namespace CustomListProject
     {
         static void Main(string[] args)
         {
+
+            //List<string> thing = new List<string>();
+            //string newString = thing.ToString();
+
+            //Console.ReadLine();
+
         }
     }
 }

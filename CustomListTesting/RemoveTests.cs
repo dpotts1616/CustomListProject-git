@@ -169,7 +169,6 @@ namespace CustomListTesting
         {
             //arrange
             CustomList<int> list = new CustomList<int>();
-            int index = 6;
 
             //act
             list.Remove(list[6]);

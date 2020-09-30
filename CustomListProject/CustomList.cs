@@ -53,7 +53,19 @@ namespace CustomListProject
 
         public void Remove(T item)
         {
-
+            for(int i =0; i < count; i++)
+            {
+                if (item.Equals(items[i]))
+                {
+                    items[i] = default;
+                    for(int a = i; a < count; a++)
+                    {
+                        items[a] = items[a + 1];
+                    }
+                    count--;
+                    break;
+                }
+            }
         }
         
 

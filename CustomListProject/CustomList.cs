@@ -108,6 +108,11 @@ namespace CustomListProject
             }
             return list;
         }
+
+        public void Zip(CustomList<T> list)
+        {
+
+        }
         
     }
 }

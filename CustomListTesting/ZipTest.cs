@@ -5,98 +5,10 @@ using CustomListProject;
 namespace CustomListTesting
 {
     [TestClass]
-    public class MinusOperatorTest
+    public class ZipTest
     {
         [TestMethod]
-        public void MinusOperator_TwoIntLists_ListOneMissingNumbersFromListTwo()
-        {
-            //arrange
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
-            int value1 = 1;
-            int value2 = 2;
-            int value3 = 3;
-            int value4 = 1;
-            int value5 = 5;
-            int value6 = 6;
-            int expected1 = 3;
-            int expected2 = 5;
-
-            //act
-            list1.Add(value1);
-            list1.Add(value3);
-            list1.Add(value5);
-            list2.Add(value2);
-            list2.Add(value4);
-            list2.Add(value6);
-            CustomList<int> result = list1 - list2;
-
-            //assert
-            Assert.AreEqual(expected1, result[0]);
-            Assert.AreEqual(expected2, result[1]);
-        }
-
-        [TestMethod]
-        public void MinusOperator_TwoIntLists_CountUpdatedWhenItemRemoved()
-        {
-            //arrange
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
-            int value1 = 1;
-            int value2 = 2;
-            int value3 = 3;
-            int value4 = 1;
-            int value5 = 5;
-            int value6 = 6;
-            int expected = 2;
-
-            //act
-            list1.Add(value1);
-            list1.Add(value3);
-            list1.Add(value5);
-            list2.Add(value2);
-            list2.Add(value4);
-            list2.Add(value6);
-            CustomList<int> result = list1 - list2;
-
-            //assert
-            Assert.AreEqual(expected, result.Count);
-        }
-
-        [TestMethod]
-        public void MinusOperator_TwoIntListsWithMultipleSameNumbers_OnlyOneValueDeleted()
-        {
-            //arrange
-            CustomList<int> list1 = new CustomList<int>();
-            CustomList<int> list2 = new CustomList<int>();
-            int value1 = 1;
-            int value2 = 2;
-            int value3 = 3;
-            int value4 = 1;
-            int value5 = 5;
-            int value6 = 6;
-            int expected1 = 1;
-            int expected2 = 2;
-
-            //act
-            list1.Add(value1);
-            list1.Add(value1);
-            list1.Add(value1);
-            list1.Add(value2);
-            list1.Add(value3);
-            list2.Add(value4);
-            list2.Add(value5);
-            list2.Add(value6);
-            CustomList<int> result = list1 - list2;
-
-            //assert
-            Assert.AreEqual(expected1, result[0]);
-            Assert.AreEqual(expected1, result[1]);
-            Assert.AreEqual(expected2, result[2]);
-        }
-
-        [TestMethod]
-        public void MinusOperator_TwoIntListsFirstOneEmpty_ReturnEmptyList()
+        public void ZipMethod_TwoIntLists_ListOneContainingAllContents()
         {
             //arrange
             CustomList<int> list1 = new CustomList<int>();
@@ -107,53 +19,133 @@ namespace CustomListTesting
             int value4 = 4;
             int value5 = 5;
             int value6 = 6;
-            int expected = 0;
+            int expected = 6;
 
             //act
-            list2.Add(value1);
+            list1.Add(value1);
+            list1.Add(value3);
+            list1.Add(value5);
             list2.Add(value2);
-            list2.Add(value3);
             list2.Add(value4);
-            list2.Add(value5);
             list2.Add(value6);
-            CustomList<int> result = list1 - list2;
+            list1.Zip(list2);
 
             //assert
-            Assert.AreEqual(expected, result.Count);
+            Assert.AreEqual(expected, list1.Count);
         }
 
+
         [TestMethod]
-        public void MinusOperator_ThreeLists_ResultListSubtractsFromBothLists()
+        public void ZipMethod_TwoIntLists_ListOneWithCorrectOrder()
         {
             //arrange
             CustomList<int> list1 = new CustomList<int>();
             CustomList<int> list2 = new CustomList<int>();
-            CustomList<int> list3 = new CustomList<int>();
-
             int value1 = 1;
             int value2 = 2;
             int value3 = 3;
             int value4 = 4;
             int value5 = 5;
             int value6 = 6;
-            int expected = 3;
-            int expectedCount = 1;
+            string expected = "123456";
 
             //act
             list1.Add(value1);
-            list1.Add(value2);
             list1.Add(value3);
-            list2.Add(value1);
-            list2.Add(value1);
+            list1.Add(value5);
+            list2.Add(value2);
             list2.Add(value4);
-            list3.Add(value2);
-            list3.Add(value5);
-            list3.Add(value6);
-            CustomList<int> result = list1 - list2 - list3;
+            list2.Add(value6);
+            list1.Zip(list2);
+            string listOne = list1.ToString();
 
             //assert
-            Assert.AreEqual(expected, result[0]);
-            Assert.AreEqual(expectedCount, result.Count);
+            Assert.AreEqual(expected, listOne);
+        }
+
+        [TestMethod]
+        public void ZipMethod_TwoIntListsListOneLarger_ListOneWithCorrectOrder()
+        {
+            //arrange
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            int value6 = 6;
+            string expected = "123456";
+
+            //act
+            list1.Add(value1);
+            list1.Add(value3);
+            list1.Add(value5);
+            list1.Add(value6);
+            list2.Add(value2);
+            list2.Add(value4);
+            list1.Zip(list2);
+            string listOne = list1.ToString();
+
+            //assert
+            Assert.AreEqual(expected, listOne);
+        }
+
+        [TestMethod]
+        public void ZipMethod_TwoIntListsListOneSmaller_ListOneWithCorrectOrder()
+        {
+            //arrange
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            int value6 = 6;
+            string expected = "123456";
+
+            //act
+            list1.Add(value1);
+            list1.Add(value3);
+            list2.Add(value2);
+            list2.Add(value4);
+            list2.Add(value5);
+            list2.Add(value6);
+            list1.Zip(list2);
+            string listOne = list1.ToString();
+
+            //assert
+            Assert.AreEqual(expected, listOne);
+        }
+
+
+        [TestMethod]
+        public void ZipMethod_TwoIntLists_ListTwoUnchanged()
+        {
+            //arrange
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            int value6 = 6;
+            string expected = "246";
+
+            //act
+            list1.Add(value1);
+            list1.Add(value3);
+            list1.Add(value5);
+            list2.Add(value2);
+            list2.Add(value4);
+            list2.Add(value6);
+            list1.Zip(list2);
+            string listTwo = list2.ToString();
+
+            //assert
+            Assert.AreEqual(expected, listTwo);
         }
     }
 }

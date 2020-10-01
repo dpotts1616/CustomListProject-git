@@ -147,5 +147,34 @@ namespace CustomListTesting
             //assert
             Assert.AreEqual(expected, listTwo);
         }
+
+
+        [TestMethod]
+        public void ZipMethod_TwoIntListsListOneEmpty_ListOneWithCorrectOrder()
+        {
+            //arrange
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 4;
+            int value5 = 5;
+            int value6 = 6;
+            string expected = "123456";
+
+            //act
+            list2.Add(value1);
+            list2.Add(value2);
+            list2.Add(value3);
+            list2.Add(value4);
+            list2.Add(value5);
+            list2.Add(value6);
+            list1.Zip(list2);
+            string listOne = list1.ToString();
+
+            //assert
+            Assert.AreEqual(expected, listOne);
+        }
     }
 }

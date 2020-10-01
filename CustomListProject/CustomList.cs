@@ -111,7 +111,57 @@ namespace CustomListProject
 
         public void Zip(CustomList<T> list)
         {
+            T[] zipList = new T[capacity];
+            int zipCount = 0;
+            int arrayCount = 0;
+            while (zipCount < Count || zipCount < list.Count)
+            {
+                if (zipCount < Count)
+                {
+                    if (arrayCount == capacity)
+                    {
+                        T[] temporary = new T[arrayCount];
+                        for (int i = 0; i < arrayCount; i++)
+                        {
+                            temporary[i] = zipList[i];
+                        }
+                        zipList = new T[capacity *= 2];
+                        for (int i = 0; i < arrayCount; i++)
+                        {
+                            zipList[i] = temporary[i];
+                        }
+                    }
+                    zipList[arrayCount] = items[zipCount];
+                    arrayCount++;
+                }
+                if (zipCount < list.Count)
+                {
+                    if (arrayCount == capacity)
+                    {
+                        T[] temporary = new T[arrayCount];
+                        for (int i = 0; i < arrayCount; i++)
+                        {
+                            temporary[i] = zipList[i];
+                        }
+                        zipList = new T[capacity *= 2];
+                        for (int i = 0; i < arrayCount; i++)
+                        {
+                            zipList[i] = temporary[i];
+                        }
+                    }
+                    zipList[arrayCount] = list[zipCount];
+                    arrayCount++;
+                }
+                zipCount++;
+            }
 
+            count = arrayCount;
+            items = new T[capacity];
+            for (int i = 0; i < arrayCount; i++)
+            {
+                items[i] = zipList[i];
+            }
+            
         }
         
     }

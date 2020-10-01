@@ -94,6 +94,20 @@ namespace CustomListProject
             }
             return list;
         }
+
+        public static CustomList<T> operator -(CustomList<T> a, CustomList<T> b)
+        {
+            CustomList<T> list = new CustomList<T>();
+            for (int i = 0; i < a.Count; i++)
+            {
+                list.Add(a[i]);
+            }
+            for (int x = 0; x < b.Count; x++)
+            {
+                list.Remove(b[x]);
+            }
+            return list;
+        }
         
     }
 }

@@ -54,6 +54,7 @@
     <Compile Include="RemoveTests.cs" />
     <Compile Include="ToStringTests.cs" />
     <Compile Include="PlusOperatorTest.cs" />
+    <Compile Include="MinusOperatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

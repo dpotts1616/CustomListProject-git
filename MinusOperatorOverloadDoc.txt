@@ -1,0 +1,60 @@
+CustomList<T> - Operator Overload
+
+Namespace:
+Assembly:
+
+Removes specific objects in CustomList<T> based on occurence of object in CustomList<T> 2.
+
+C# Syntax
+CustomList<int> result = list1 - list2;
+
+
+Parameters
+CustomList<T>
+The list of objects to be removed from CustomList<T>.
+
+Return Type
+CustomList<T>
+
+Returns a new instance of CustomList<T> a without the values that are contained in CustomList<T> 2.
+
+Implements
+CustomList<int> result = list1 - list2;
+
+Example:
+The following example demonstrates how to remove all objects from CustomList<T> 1 that occur in CustomList<T> 2.:
+
+using System;
+using CustomListProject;
+
+public class Numbers
+{
+
+            CustomList<int> list1 = new CustomList<int>();
+            CustomList<int> list2 = new CustomList<int>();
+            int value1 = 1;
+            int value2 = 2;
+            int value3 = 3;
+            int value4 = 1;
+            int value5 = 5;
+            int value6 = 6;
+
+            list1.Add(value1);
+            list1.Add(value3);
+            list1.Add(value5);
+
+            list2.Add(value2);
+            list2.Add(value4);
+            list2.Add(value6);
+            CustomList<int> result = list1 - list2;
+	    
+	    foreach (int i in list1)
+		{
+	    	    Console.WriteLine(i);
+		}
+
+		/*
+		  2
+		  3
+
+}

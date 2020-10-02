@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CustomListProject
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         //member variables
         private int count;
@@ -114,9 +115,9 @@ namespace CustomListProject
             T[] zipList = new T[capacity];
             int zipCount = 0;
             int arrayCount = 0;
-            while (zipCount < Count || zipCount < list.Count)
+            while (zipCount < count || zipCount < list.Count)
             {
-                if (zipCount < Count)
+                if (zipCount < count)
                 {
                     if (arrayCount == capacity)
                     {
@@ -163,6 +164,13 @@ namespace CustomListProject
             }
             
         }
-        
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                yield return items[i];
+            }
+        }
     }
 }

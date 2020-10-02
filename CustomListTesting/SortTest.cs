@@ -36,6 +36,7 @@ namespace CustomListTesting
             Assert.AreEqual(expected, list.Count);
         }
 
+        [TestMethod]
         public void Sort_StringList_AlphabeticalOrder()
         {
             //arrange
@@ -55,6 +56,7 @@ namespace CustomListTesting
             Assert.AreEqual(expected4, list[3]);
         }
 
+        [TestMethod]
         public void Sort_StringList_CountStaysSame()
         {
             //arrange
@@ -68,6 +70,7 @@ namespace CustomListTesting
             Assert.AreEqual(expected, list.Count);
         }
 
+        [TestMethod]
         public void Sort_CharList_AlphabeticalOrder()
         {
             //arrange

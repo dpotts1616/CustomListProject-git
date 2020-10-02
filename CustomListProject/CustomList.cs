@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CustomListProject
 {
-    public class CustomList<T> : IEnumerable
+    public class CustomList<T> : IEnumerable, IComparable, IComparer
     {
         //member variables
         private int count;
@@ -162,7 +162,24 @@ namespace CustomListProject
             {
                 items[i] = zipList[i];
             }
-            
+        }
+
+       
+
+        public void Sort()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                T item = items[i];
+                int index = i;
+
+                while(index > 0 && Comparer<T>.Default.Compare(items[index-1], item)>0)
+                {
+                    items[index] = items[index - 1];
+                    index--;
+                }
+                items[index] = item;   
+            }
         }
 
         public IEnumerator GetEnumerator()
@@ -172,5 +189,18 @@ namespace CustomListProject
                 yield return items[i];
             }
         }
+
+        public int CompareTo(object obj) 
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Compare(object x, object y)
+        {
+            throw new NotImplementedException();
+        }
+
+        
+
     }
 }
